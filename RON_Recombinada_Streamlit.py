@@ -100,32 +100,32 @@ if archivo is not None:
 
         with st.spinner("Procesando muestra..."):
 
-            reformado = pd.read_csv(archivo, sep=";", encoding="latin1", header=None)
+            Recombinada = pd.read_csv(archivo, sep=";", encoding="latin1", header=None)
 
             try:
-                celda_producto = reformado.loc[reformado[0] == "Producto", 4].values[0]
-                celda_lims = reformado.loc[reformado[0] == "Número de Muestra", 4].values[0]
+                celda_producto = Recombinada.loc[Recombinada[0] == "Producto", 4].values[0]
+                celda_lims = Recombinada.loc[Recombinada[0] == "Número de Muestra", 4].values[0]
             except:
                 st.error("❌ Formato de archivo inválido")
                 st.stop()
 
             # VARIABLES
             datos = {
-                'DENSIDAD': extraer_valor(reformado, "Densidad a 15ºC"),
-                'IBP': extraer_valor(reformado, "IBP"),
-                'T5': extraer_valor(reformado, "5% vol"),
-                'T10': extraer_valor(reformado, "10% vol"),
-                'T20': extraer_valor(reformado, "20% vol"),
-                'T30': extraer_valor(reformado, "30% vol"),
-                'T40': extraer_valor(reformado, "40% vol"),
-                'T50': extraer_valor(reformado, "50% vol"),
-                'T60': extraer_valor(reformado, "60% vol"),
-                'T70': extraer_valor(reformado, "70% vol"),
-                'T80': extraer_valor(reformado, "80% vol"),
-                'T90': extraer_valor(reformado, "90% vol"),
-                'T95': extraer_valor(reformado, "95% vol"),
-                'PUNTO FINAL': extraer_valor(reformado, "Punto Final"),
-                'TENS VAP': extraer_valor(reformado, "Tensión de Vapor")
+                'DENSIDAD': extraer_valor(Recombinada, "Densidad a 15ºC"),
+                'IBP': extraer_valor(Recombinada, "IBP"),
+                'T5': extraer_valor(Recombinada, "5% vol"),
+                'T10': extraer_valor(Recombinada, "10% vol"),
+                'T20': extraer_valor(Recombinada, "20% vol"),
+                'T30': extraer_valor(Recombinada, "30% vol"),
+                'T40': extraer_valor(Recombinada, "40% vol"),
+                'T50': extraer_valor(Recombinada, "50% vol"),
+                'T60': extraer_valor(Recombinada, "60% vol"),
+                'T70': extraer_valor(Recombinada, "70% vol"),
+                'T80': extraer_valor(Recombinada, "80% vol"),
+                'T90': extraer_valor(Recombinada, "90% vol"),
+                'T95': extraer_valor(Recombinada, "95% vol"),
+                'PUNTO FINAL': extraer_valor(Recombinada, "Punto Final"),
+                'AZUFRE': extraer_valor(Recombinada, "Azufre")
             }
 
             datos_convertidos = {k: convertir(v) for k, v in datos.items()}
